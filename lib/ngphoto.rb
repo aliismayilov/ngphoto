@@ -8,7 +8,7 @@ class Ngphoto
   attr_reader :title, :url
 
   def initialize(title, url)
-    @title = title.split('--')[0].strip.gsub(' ', '-').downcase
+    @title = Time.now.strftime('%Y-%m-%d-') + title.split('--')[0].strip.gsub(' ', '-').downcase
     @url   = url
   end
 

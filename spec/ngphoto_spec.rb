@@ -12,23 +12,19 @@ describe Ngphoto do
   end
 
   describe '#title' do
-    let(:ngphoto) { Ngphoto.new 'title -- National Geographic Photo of the Day', 'url' }
+    subject(:title) { Ngphoto.new('title -- National Geographic Photo of the Day', 'url').title }
 
-    it "does not include National Geographic Photo of the Day" do
-      expect(ngphoto.title).not_to include('National Geographic Photo of the Day')
-    end
+    it { should_not include('National Geographic Photo of the Day') }
 
-    it "does not include double dashes" do
-      expect(ngphoto.title).not_to include('--')
-    end
+    it { should_not include('--') }
 
-    it "does not include any whitespace" do
-      expect(ngphoto.title).not_to include(' ')
-    end
+    it { should_not include(' ')}
 
     it "does not have any uppercase letters" do
-      expect(ngphoto.title).to eql(ngphoto.title.downcase)
+      expect(title).to eql(title.downcase)
     end
+
+    it { should match /^#{Time.now.strftime('%Y-%m-%d-')}/ }
   end
 
   describe '#save' do
@@ -37,7 +33,7 @@ describe Ngphoto do
 
       ngphoto.save
 
-      expect(File.delete("#{ENV['HOME']}/Pictures/ngphoto/title.jpg")).not_to raise_error
+      expect(File.delete("#{ENV['HOME']}/Pictures/ngphoto/#{ngphoto.title}.jpg")).not_to raise_error
     end
   end
 

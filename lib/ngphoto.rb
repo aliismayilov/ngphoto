@@ -8,8 +8,12 @@ class Ngphoto
   attr_reader :title, :url
 
   def initialize(title, url)
-    @title = title
+    @title = title.split('--')[0].strip.gsub(' ', '-').downcase
     @url   = url
+  end
+
+  def save
+    system "curl -o ~/Pictures/ngphoto/#{title}.jpg #{url}"
   end
 
   def self.fetch

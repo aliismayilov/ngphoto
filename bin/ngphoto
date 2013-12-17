@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require "ngphoto"
+require 'fileutils'
+
+# make sure that the directory exists
+FileUtils::mkdir_p "#{ENV['HOME']}/Pictures/ngphoto"
 
 Ngphoto.fetch.save

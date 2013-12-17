@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'ngphoto'
 require 'vcr'
-require 'pry'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'

@@ -1,0 +1,2 @@
+class Ngphoto
+end

@@ -1,8 +1,13 @@
 require 'ngphoto'
 
 describe Ngphoto do
-  describe '.find_photo_url' do
-    it 'finds url of the photo of the day'
+  describe '.fetch' do
+    it 'fetches the latest photo of the day' do
+      ngphoto = Ngphoto.fetch
+      
+      expect(ngphoto.url).to match /^http:\/\/images.nationalgeographic.com\/wpf\/media-live\/photos.*.jpg$/
+      expect(ngphoto.title).not_to be_empty
+    end
   end
 
   describe '.save' do

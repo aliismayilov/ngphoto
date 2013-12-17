@@ -35,11 +35,9 @@ describe Ngphoto do
     it 'downloads and saves image in ~/Pictures/ngphoto' do
       ngphoto = Ngphoto.new 'title', 'url'
 
-      Kernel.stub system: true
-
       ngphoto.save
 
-      expect(Kernel).to receive(:system).with('curl -o ~/Pictures/ngphoto/title.jpg url')
+      expect(File.delete("#{ENV['HOME']}/Pictures/ngphoto/title.jpg")).not_to raise_error
     end
   end
 

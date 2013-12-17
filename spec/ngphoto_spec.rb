@@ -1,7 +1,8 @@
-require 'ngphoto'
+# -*- encoding : utf-8 -*-
+require 'spec_helper'
 
 describe Ngphoto do
-  describe '.fetch' do
+  describe '.fetch', :vcr do
     it 'fetches the latest photo of the day' do
       ngphoto = Ngphoto.fetch
       
